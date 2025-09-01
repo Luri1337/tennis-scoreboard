@@ -22,8 +22,5 @@ public class Player {
     @Column (nullable = false)
     private String name;
 
-    public Player(String testName) {
-        this.name = testName;
-    }
 }
 
