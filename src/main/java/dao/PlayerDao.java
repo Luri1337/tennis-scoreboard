@@ -24,10 +24,10 @@ public class PlayerDao implements CrudDao<Player> {
         }
     }
 
-    public Optional<Player> getByName(int id) {
+    public Optional<Player> getByName(String name) {
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();
-            return session.createQuery("from Player where id = :id", Player.class)
+            return session.createQuery("from Player where name = :name", Player.class)
                     .uniqueResultOptional();
         }
     }

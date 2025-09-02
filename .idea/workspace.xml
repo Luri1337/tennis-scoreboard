@@ -9,16 +9,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24997aee-ecde-4976-811f-55a953de3e4b" name="Changes" comment="Connect Hibernate, add data source. Create Player entity. Table players in db is not creating, when starting project.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/CrudDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/MatchDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/PlayerDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Match.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/HibernateListener.java" afterDir="false" />
+    <list default="true" id="24997aee-ecde-4976-811f-55a953de3e4b" name="Changes" comment="HibernateListener configuration, Dao for both match and player, also some changes in models. Initialize tables in bd">
+      <change afterPath="$PROJECT_DIR$/src/main/java/serlvet/MatchScoreServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/serlvet/MatchesServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/serlvet/NewMatchServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/FinishedMatchesPersistenceService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/MatchScoreCalculationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/OngoingMatchesService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/match-score.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/matches.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/new-match.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/serlvet/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/PlayerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/PlayerDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Match.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Match.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +32,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Jsp File" />
         <option value="Class" />
       </list>
     </option>
@@ -93,6 +98,11 @@
     ]
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Dima\IdeaProjects\tennis-scoreboard\src\main\webapp\WEB-INF\jsp" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Tomcat 11.0.4" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 11.0.4" ALTERNATIVE_JRE_ENABLED="false">
       <deployment>
@@ -157,7 +167,8 @@
       <workItem from="1751491738121" duration="2848000" />
       <workItem from="1754818553102" duration="770000" />
       <workItem from="1756732573853" duration="4658000" />
-      <workItem from="1756741503478" duration="3326000" />
+      <workItem from="1756741503478" duration="3806000" />
+      <workItem from="1756801972258" duration="10376000" />
     </task>
     <task id="LOCAL-00001" summary="Connect Hibernate, add data source. Create Player entity. Table players in db is not creating, when starting project.">
       <option name="closed" value="true" />
@@ -167,7 +178,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751494453414</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="HibernateListener configuration, Dao for both match and player, also some changes in models. Initialize tables in bd">
+      <option name="closed" value="true" />
+      <created>1756745448349</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1756745448349</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,6 +194,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Connect Hibernate, add data source. Create Player entity. Table players in db is not creating, when starting project." />
-    <option name="LAST_COMMIT_MESSAGE" value="Connect Hibernate, add data source. Create Player entity. Table players in db is not creating, when starting project." />
+    <MESSAGE value="HibernateListener configuration, Dao for both match and player, also some changes in models. Initialize tables in bd" />
+    <option name="LAST_COMMIT_MESSAGE" value="HibernateListener configuration, Dao for both match and player, also some changes in models. Initialize tables in bd" />
   </component>
 </project>
