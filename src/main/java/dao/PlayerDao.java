@@ -35,9 +35,11 @@ public class PlayerDao implements CrudDao<Player> {
     @Override
     public Optional<Player> getById(int id) {
         try (Session session = sessionFactory.openSession()) {
-            session.beginTransaction();
+
             return session.createQuery("from Player where id = :id", Player.class)
-                    .uniqueResultOptional();
+                    .setParameter("id", id).uniqueResultOptional();
+
+
         }
     }
 

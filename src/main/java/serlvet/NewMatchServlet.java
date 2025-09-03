@@ -1,13 +1,12 @@
 package serlvet;
 
-import dao.MatchDao;
 import dao.PlayerDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.Match;
+import model.OngoingMatch;
 import model.Player;
 import org.hibernate.SessionFactory;
 import service.OngoingMatchesService;
@@ -24,6 +23,7 @@ public class NewMatchServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         SessionFactory sessionFactory = (SessionFactory) getServletContext().getAttribute("sessionFactory");
+        ongoingMatchesService = (OngoingMatchesService) getServletContext().getAttribute("ongoingMatchesService");
         playerDao = new PlayerDao(sessionFactory);
     }
 
@@ -38,25 +38,25 @@ public class NewMatchServlet extends HttpServlet {
         String player2 = req.getParameter("player2");
 
         try {
-            Player newPlayer1 = playerDao.getByName(player1).orElseThrow(() -> new RuntimeException("Player not found"));
-            Player newPlayer2 = playerDao.getByName(player2).orElseThrow(() -> new RuntimeException("Player not found"));
+            Player newPlayer1 = new Player();
+            newPlayer1.setName(player1);
+            Player newPlayer2 = new Player();
+            newPlayer2.setName(player2);
+            playerDao.save(newPlayer1);
+            playerDao.save(newPlayer2);
 
-
-            Match match = new Match();
+            OngoingMatch match = new OngoingMatch();
             match.setPlayer1(newPlayer1);
             match.setPlayer2(newPlayer2);
 
             UUID matchId = UUID.randomUUID();
             ongoingMatchesService.addMatch(matchId, match);
 
-
             resp.sendRedirect(req.getContextPath() + "/match-score?uuid=" + matchId);
 
 
-
-
-
-        } catch (Exception ignored) {
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 

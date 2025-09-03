@@ -1,6 +1,6 @@
 package dao;
 
-import model.Match;
+import model.FinishedMatch;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -8,7 +8,7 @@ import org.hibernate.Transaction;
 import java.util.List;
 import java.util.Optional;
 
-public class MatchDao implements CrudDao<Match> {
+public class MatchDao implements CrudDao<FinishedMatch> {
     private final SessionFactory sessionFactory;
 
     public MatchDao(SessionFactory sessionFactory) {
@@ -16,7 +16,7 @@ public class MatchDao implements CrudDao<Match> {
     }
 
     @Override
-    public void save(Match match) {
+    public void save(FinishedMatch match) {
         try (Session session = sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();
             session.persist(match);
@@ -25,29 +25,29 @@ public class MatchDao implements CrudDao<Match> {
     }
 
     @Override
-    public Optional<Match> getById(int id) {
+    public Optional<FinishedMatch> getById(int id) {
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();
-            return session.createQuery("from Match where id = :id", Match.class)
+            return session.createQuery("from FinishedMatch where id = :id", FinishedMatch.class)
                     .setParameter("id", id).uniqueResultOptional();
         }
     }
 
     @Override
-    public List<Match> getAll() {
+    public List<FinishedMatch> getAll() {
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();
-            return session.createQuery("from Match", Match.class).list();
+            return session.createQuery("from FinishedMatch", FinishedMatch.class).list();
         }
     }
 
-    public Optional <Match> getByName(String name) {
+    public Optional <FinishedMatch> getByName(String name) {
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();
             return session.createQuery("""
-                    FROM Match m
+                    FROM FinishedMatch m
                     WHERE m.player1.name = :name OR m.player2.name = :name
-                    """, Match.class).uniqueResultOptional();
+                    """, FinishedMatch.class).uniqueResultOptional();
         }
     }
 }

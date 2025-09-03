@@ -14,8 +14,8 @@
 <body>
     <h2> Create new match</h2>
     <form action="${pageContext.request.contextPath}/new-match" method="post">
-        <label> Player 1: <input type= "text" name = "player 1" required> </label> <br><br>
-        <label> Player 2: <input type= "text" name = "player 2" required> </label> <br><br>
+        <label> Player 1: <input type= "text" name = "player1" required> </label> <br><br>
+        <label> Player 2: <input type= "text" name = "player2" required> </label> <br><br>
         <button type="submit"> Start Match </button>
     </form>
 </body>

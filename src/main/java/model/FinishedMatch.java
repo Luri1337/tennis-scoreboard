@@ -14,7 +14,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "Matches")
-public class Match {
+public class FinishedMatch {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -32,7 +32,7 @@ public class Match {
     private Player winner;
 
 
-    public Match(Player player1, Player player2, Player winner) {
+    public FinishedMatch(Player player1, Player player2, Player winner) {
         this.player1 = player1;
         this.player2 = player2;
         this.winner = winner;

@@ -2,7 +2,8 @@ package service;
 
 import lombok.Getter;
 import lombok.Setter;
-import model.Match;
+import model.FinishedMatch;
+import model.OngoingMatch;
 
 import java.util.Map;
 import java.util.UUID;
@@ -11,9 +12,9 @@ import java.util.concurrent.ConcurrentHashMap;
 @Getter
 @Setter
 public class OngoingMatchesService {
-    private Map<UUID, Match> matches = new ConcurrentHashMap();
+    private Map<UUID, OngoingMatch> matches = new ConcurrentHashMap<>();
 
-    public void addMatch(UUID matchId, Match match) {
+    public void addMatch(UUID matchId, OngoingMatch match) {
         getMatches().put(matchId, match);
     }
 }
