@@ -9,21 +9,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24997aee-ecde-4976-811f-55a953de3e4b" name="Changes" comment="NewMatchServlet post and get realz. OngoingMatchService realz. Start MatchScoreServlet get method.">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/OngoingMatch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/AppInitializer.java" afterDir="false" />
+    <list default="true" id="24997aee-ecde-4976-811f-55a953de3e4b" name="Changes" comment="AppInitializer rlz. Some refactoring with entities. MatchScoreServlet rlz, also started MatchScoreCalculationService. match-score.jsp rlz.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Point.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/MatchDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/MatchDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/PlayerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/PlayerDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Match.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/FinishedMatch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/FinishedMatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entity/FinishedMatch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/OngoingMatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entity/OngoingMatch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entity/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/serlvet/MatchScoreServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/serlvet/MatchScoreServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/serlvet/NewMatchServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/serlvet/NewMatchServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/MatchScoreCalculationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/MatchScoreCalculationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/OngoingMatchesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/OngoingMatchesService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/match-score.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/match-score.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/new-match.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/new-match.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +34,7 @@
       <list>
         <option value="Jsp File" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -188,7 +188,8 @@
       <workItem from="1756732573853" duration="4658000" />
       <workItem from="1756741503478" duration="3806000" />
       <workItem from="1756801972258" duration="10590000" />
-      <workItem from="1756884814132" duration="15138000" />
+      <workItem from="1756884814132" duration="15914000" />
+      <workItem from="1756983888812" duration="6721000" />
     </task>
     <task id="LOCAL-00001" summary="Connect Hibernate, add data source. Create Player entity. Table players in db is not creating, when starting project.">
       <option name="closed" value="true" />
@@ -214,7 +215,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756832127745</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="AppInitializer rlz. Some refactoring with entities. MatchScoreServlet rlz, also started MatchScoreCalculationService. match-score.jsp rlz.">
+      <option name="closed" value="true" />
+      <created>1756919367294</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1756919367294</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,6 +233,7 @@
     <MESSAGE value="Connect Hibernate, add data source. Create Player entity. Table players in db is not creating, when starting project." />
     <MESSAGE value="HibernateListener configuration, Dao for both match and player, also some changes in models. Initialize tables in bd" />
     <MESSAGE value="NewMatchServlet post and get realz. OngoingMatchService realz. Start MatchScoreServlet get method." />
-    <option name="LAST_COMMIT_MESSAGE" value="NewMatchServlet post and get realz. OngoingMatchService realz. Start MatchScoreServlet get method." />
+    <MESSAGE value="AppInitializer rlz. Some refactoring with entities. MatchScoreServlet rlz, also started MatchScoreCalculationService. match-score.jsp rlz." />
+    <option name="LAST_COMMIT_MESSAGE" value="AppInitializer rlz. Some refactoring with entities. MatchScoreServlet rlz, also started MatchScoreCalculationService. match-score.jsp rlz." />
   </component>
 </project>

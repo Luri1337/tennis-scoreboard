@@ -6,8 +6,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.OngoingMatch;
-import model.Player;
+import model.entity.OngoingMatch;
+import model.entity.Player;
 import org.hibernate.SessionFactory;
 import service.OngoingMatchesService;
 
@@ -48,6 +48,7 @@ public class NewMatchServlet extends HttpServlet {
             OngoingMatch match = new OngoingMatch();
             match.setPlayer1(newPlayer1);
             match.setPlayer2(newPlayer2);
+            match.init();
 
             UUID matchId = UUID.randomUUID();
             ongoingMatchesService.addMatch(matchId, match);

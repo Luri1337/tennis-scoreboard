@@ -1,6 +1,6 @@
 package dao;
 
-import model.Player;
+import model.entity.Player;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

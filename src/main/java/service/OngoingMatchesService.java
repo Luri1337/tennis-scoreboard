@@ -2,8 +2,7 @@ package service;
 
 import lombok.Getter;
 import lombok.Setter;
-import model.FinishedMatch;
-import model.OngoingMatch;
+import model.entity.OngoingMatch;
 
 import java.util.Map;
 import java.util.UUID;

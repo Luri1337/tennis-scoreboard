@@ -11,7 +11,7 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.show_sql">true</property>
 
-        <mapping class="model.Player"/>
-        <mapping class="model.FinishedMatch"/>
+        <mapping class="model.entity.Player"/>
+        <mapping class="model.entity.FinishedMatch"/>
     </session-factory>
 </hibernate-configuration>

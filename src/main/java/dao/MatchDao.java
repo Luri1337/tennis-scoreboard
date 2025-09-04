@@ -1,6 +1,6 @@
 package dao;
 
-import model.FinishedMatch;
+import model.entity.FinishedMatch;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
