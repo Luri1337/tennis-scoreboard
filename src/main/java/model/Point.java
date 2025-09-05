@@ -2,8 +2,7 @@ package model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+
 
 
 @Getter

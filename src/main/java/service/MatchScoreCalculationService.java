@@ -1,21 +1,17 @@
 package service;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import model.Point;
+import model.TieBreak;
 import model.entity.OngoingMatch;
 import model.entity.Player;
-
-import java.io.IOException;
 
 public class MatchScoreCalculationService {
 
 
-    public void addPoint(OngoingMatch match,
-                         Player winner,
-                         HttpServletRequest req,
-                         HttpServletResponse resp) throws ServletException, IOException {
+    public OngoingMatch addPoint(OngoingMatch match, Player winner) {
+        if (match.getTieBreak().isTieBreak()) {
+            tieBreak(match, winner);
+        }
         if (match.getPlayer1().getId() == winner.getId()) {
             if (match.getFirstPoints().getValue().equals("0")) {
                 match.setFirstPoints(Point.FIFTEEN);
@@ -33,8 +29,9 @@ public class MatchScoreCalculationService {
             } else {
                 match.setSecondPoints(Point.ZERO);
                 match.setFirstPoints(Point.ZERO);
-                addGame(match, winner, req, resp);
+                addGame(match, winner);
             }
+
         }
 
         if (match.getPlayer2().getId() == winner.getId()) {
@@ -54,69 +51,87 @@ public class MatchScoreCalculationService {
             } else {
                 match.setSecondPoints(Point.ZERO);
                 match.setFirstPoints(Point.ZERO);
-                addGame(match, winner, req, resp);
+                addGame(match, winner);
             }
 
         }
-
-        req.setAttribute("match", match);
-        req.getRequestDispatcher("/WEB-INF/jsp/match-score.jsp").forward(req, resp);
-
-
+        return match;
     }
 
 
-
-    private void addGame(OngoingMatch match, Player winner, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    private void addGame(OngoingMatch match, Player winner) {
         if (match.getPlayer1().getId() == winner.getId()) {
-           if (match.getFirstGames() == 6 && match.getSecondGames() == 6) {
-               tieBreak(match, winner, req, resp);
-           } else if (match.getFirstGames() == 5) {
-               match.setFirstGames(0);
-              addSet(match, winner, req, resp);
-           }else{
-               match.setFirstGames(match.getFirstGames() + 1);
-           }
+            if (match.getFirstGames() == 5 && match.getSecondGames() == 6) {
+                match.setFirstGames(match.getSecondGames() + 1);
+                match.getTieBreak().setTieBreak(true);
+                tieBreak(match, winner);
+            } else if (match.getFirstGames() == 5 && match.getSecondGames() <= 4) {
+                match.setFirstGames(0);
+                addSet(match, winner);
+            } else {
+                match.setFirstGames(match.getFirstGames() + 1);
+            }
         }
         if (match.getPlayer2().getId() == winner.getId()) {
-            if (match.getFirstGames() == 6 && match.getSecondGames() == 6) {
-                tieBreak(match, winner, req, resp);
-            } else if (match.getSecondGames() == 5) {
+            if (match.getFirstGames() == 6 && match.getSecondGames() == 5) {
+                match.setSecondGames(match.getSecondGames() + 1);
+                match.getTieBreak().setTieBreak(true);
+                tieBreak(match, winner);
+            } else if (match.getSecondGames() == 5 && match.getFirstGames() <= 4) {
                 match.setSecondGames(0);
-                addSet(match, winner, req, resp);
-            }else{
+                addSet(match, winner);
+            } else {
                 match.setSecondGames(match.getSecondGames() + 1);
             }
         }
 
-        req.setAttribute("match", match);
-        req.getRequestDispatcher("/WEB-INF/jsp/match-score.jsp").forward(req, resp);
     }
 
-    private void tieBreak(OngoingMatch match, Player winner, HttpServletRequest req, HttpServletResponse resp) {
-    }
-
-    private void addSet(OngoingMatch match, Player winner, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    private void tieBreak(OngoingMatch match, Player winner) {
+        TieBreak tieBreak = match.getTieBreak();
         if (match.getPlayer1().getId() == winner.getId()) {
-            if (match.getFirstGames() == 1){
-                // finish match
+            if ((tieBreak.getFirstPoints() == tieBreak.getSecondPoints())
+                    || (tieBreak.getFirstPoints() - tieBreak.getSecondPoints() == -1)){
+                tieBreak.setFirstPoints(tieBreak.getFirstPoints() + 1);
+            }else{
+                tieBreak.setFirstPoints(tieBreak.getFirstPoints() + 1);
+                match.setTieBreak(tieBreak);
+                addSet(match, winner);
             }
-            else {
+
+        }
+        if (match.getPlayer2().getId() == winner.getId()) {
+            if ((tieBreak.getFirstPoints() == tieBreak.getSecondPoints())
+                    || (tieBreak.getSecondPoints() - tieBreak.getFirstPoints() == -1)) {
+                tieBreak.setSecondPoints(tieBreak.getSecondPoints() + 1);
+            } else {
+                tieBreak.setSecondPoints(tieBreak.getSecondPoints() + 1);
+                match.setTieBreak(tieBreak);
+                addSet(match, winner);
+            }
+        }
+    }
+
+    private void addSet(OngoingMatch match, Player winner) {
+        if (match.getPlayer1().getId() == winner.getId()) {
+            if (match.getFirstGames() == 1) {
+                match.setFirstGames(2);
+                match.setWinner(match.getPlayer1());
+                match.setFinished(true);
+            } else {
                 match.setFirstSets(match.getFirstGames() + 1);
             }
         }
 
         if (match.getPlayer2().getId() == winner.getId()) {
-            if (match.getSecondGames() == 1){
-                //finish match
-            }
-            else {
+            if (match.getSecondGames() == 1) {
+                match.setSecondGames(2);
+                match.setWinner(match.getPlayer2());
+                match.setFinished(true);
+            } else {
                 match.setSecondSets(match.getSecondGames() + 1);
             }
         }
-        req.setAttribute("match", match);
-        req.getRequestDispatcher("/WEB-INF/jsp/match-score.jsp").forward(req, resp);
-
     }
 
 }
