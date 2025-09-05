@@ -9,8 +9,9 @@ public class MatchScoreCalculationService {
 
 
     public OngoingMatch addPoint(OngoingMatch match, Player winner) {
-        if (match.getTieBreak().isTieBreak()) {
+        if (match.getTieBreak().getIsTieBreak()) {
             tieBreak(match, winner);
+            return match;
         }
         if (match.getPlayer1().getId() == winner.getId()) {
             if (match.getFirstPoints().getValue().equals("0")) {
@@ -62,13 +63,18 @@ public class MatchScoreCalculationService {
     private void addGame(OngoingMatch match, Player winner) {
         if (match.getPlayer1().getId() == winner.getId()) {
             if (match.getFirstGames() == 5 && match.getSecondGames() == 6) {
-                match.setFirstGames(match.getSecondGames() + 1);
+                match.setFirstGames(match.getFirstGames() + 1);
                 match.getTieBreak().setTieBreak(true);
-                tieBreak(match, winner);
             } else if (match.getFirstGames() == 5 && match.getSecondGames() <= 4) {
                 match.setFirstGames(0);
+                match.setSecondGames(0);
                 addSet(match, winner);
-            } else {
+            } else if (match.getFirstGames() == 6 && match.getSecondGames() == 5) {
+                match.setFirstGames(0);
+                match.setSecondGames(0);
+                addSet(match, winner);
+            }
+            else {
                 match.setFirstGames(match.getFirstGames() + 1);
             }
         }
@@ -76,11 +82,16 @@ public class MatchScoreCalculationService {
             if (match.getFirstGames() == 6 && match.getSecondGames() == 5) {
                 match.setSecondGames(match.getSecondGames() + 1);
                 match.getTieBreak().setTieBreak(true);
-                tieBreak(match, winner);
             } else if (match.getSecondGames() == 5 && match.getFirstGames() <= 4) {
                 match.setSecondGames(0);
+                match.setFirstGames(0);
                 addSet(match, winner);
-            } else {
+            } else if (match.getSecondGames() == 6 && match.getFirstGames() == 5) {
+                match.setFirstGames(0);
+                match.setSecondGames(0);
+                addSet(match, winner);
+            }
+            else {
                 match.setSecondGames(match.getSecondGames() + 1);
             }
         }
@@ -91,22 +102,26 @@ public class MatchScoreCalculationService {
         TieBreak tieBreak = match.getTieBreak();
         if (match.getPlayer1().getId() == winner.getId()) {
             if ((tieBreak.getFirstPoints() == tieBreak.getSecondPoints())
-                    || (tieBreak.getFirstPoints() - tieBreak.getSecondPoints() == -1)){
+                    || (tieBreak.getFirstPoints() - tieBreak.getSecondPoints() == -1)
+                    || (tieBreak.getFirstPoints() < 6)) {
                 tieBreak.setFirstPoints(tieBreak.getFirstPoints() + 1);
             }else{
-                tieBreak.setFirstPoints(tieBreak.getFirstPoints() + 1);
-                match.setTieBreak(tieBreak);
+                tieBreak.reset();
+                match.setFirstGames(0);
+                match.setSecondGames(0);
                 addSet(match, winner);
             }
 
         }
         if (match.getPlayer2().getId() == winner.getId()) {
             if ((tieBreak.getFirstPoints() == tieBreak.getSecondPoints())
-                    || (tieBreak.getSecondPoints() - tieBreak.getFirstPoints() == -1)) {
+                    || (tieBreak.getSecondPoints() - tieBreak.getFirstPoints() == -1)
+                    || (tieBreak.getSecondPoints() < 6)) {
                 tieBreak.setSecondPoints(tieBreak.getSecondPoints() + 1);
             } else {
-                tieBreak.setSecondPoints(tieBreak.getSecondPoints() + 1);
-                match.setTieBreak(tieBreak);
+                tieBreak.reset();
+                match.setFirstGames(0);
+                match.setSecondGames(0);
                 addSet(match, winner);
             }
         }
@@ -115,21 +130,21 @@ public class MatchScoreCalculationService {
     private void addSet(OngoingMatch match, Player winner) {
         if (match.getPlayer1().getId() == winner.getId()) {
             if (match.getFirstGames() == 1) {
-                match.setFirstGames(2);
+                match.setFirstSets(2);
                 match.setWinner(match.getPlayer1());
                 match.setFinished(true);
             } else {
-                match.setFirstSets(match.getFirstGames() + 1);
+                match.setFirstSets(match.getFirstSets() + 1);
             }
         }
 
         if (match.getPlayer2().getId() == winner.getId()) {
             if (match.getSecondGames() == 1) {
-                match.setSecondGames(2);
+                match.setSecondSets(2);
                 match.setWinner(match.getPlayer2());
                 match.setFinished(true);
             } else {
-                match.setSecondSets(match.getSecondGames() + 1);
+                match.setSecondSets(match.getSecondSets() + 1);
             }
         }
     }

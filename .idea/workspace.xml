@@ -9,15 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24997aee-ecde-4976-811f-55a953de3e4b" name="Changes" comment="MatchScoreCalculationService realz.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/TieBreak.java" afterDir="false" />
+    <list default="true" id="24997aee-ecde-4976-811f-55a953de3e4b" name="Changes" comment="MatchScoreCalculationService realz. in 2 time">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Point.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/entity/OngoingMatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entity/OngoingMatch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/serlvet/MatchScoreServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/serlvet/MatchScoreServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/serlvet/MatchesServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/serlvet/MatchesServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/FinishedMatchesPersistenceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/FinishedMatchesPersistenceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/TieBreak.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/TieBreak.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/MatchScoreCalculationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/MatchScoreCalculationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/match-score.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/match-score.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +181,7 @@
       <workItem from="1756801972258" duration="10590000" />
       <workItem from="1756884814132" duration="15914000" />
       <workItem from="1756983888812" duration="7968000" />
-      <workItem from="1757062313585" duration="7616000" />
+      <workItem from="1757062313585" duration="11502000" />
     </task>
     <task id="LOCAL-00001" summary="Connect Hibernate, add data source. Create Player entity. Table players in db is not creating, when starting project.">
       <option name="closed" value="true" />
@@ -227,7 +223,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756991118593</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="MatchScoreCalculationService realz. in 2 time">
+      <option name="closed" value="true" />
+      <created>1757075434730</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1757075434730</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,6 +243,7 @@
     <MESSAGE value="NewMatchServlet post and get realz. OngoingMatchService realz. Start MatchScoreServlet get method." />
     <MESSAGE value="AppInitializer rlz. Some refactoring with entities. MatchScoreServlet rlz, also started MatchScoreCalculationService. match-score.jsp rlz." />
     <MESSAGE value="MatchScoreCalculationService realz." />
-    <option name="LAST_COMMIT_MESSAGE" value="MatchScoreCalculationService realz." />
+    <MESSAGE value="MatchScoreCalculationService realz. in 2 time" />
+    <option name="LAST_COMMIT_MESSAGE" value="MatchScoreCalculationService realz. in 2 time" />
   </component>
 </project>
