@@ -41,13 +41,14 @@ public class MatchDao implements CrudDao<FinishedMatch> {
         }
     }
 
-    public Optional <FinishedMatch> getByName(String name) {
+    public List <FinishedMatch> getByName(String name) {
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();
             return session.createQuery("""
                     FROM FinishedMatch m
                     WHERE m.player1.name = :name OR m.player2.name = :name
-                    """, FinishedMatch.class).uniqueResultOptional();
+                    """, FinishedMatch.class).setParameter("name",name).list();
         }
     }
+
 }

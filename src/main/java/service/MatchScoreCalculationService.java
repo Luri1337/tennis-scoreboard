@@ -129,7 +129,7 @@ public class MatchScoreCalculationService {
 
     private void addSet(OngoingMatch match, Player winner) {
         if (match.getPlayer1().getId() == winner.getId()) {
-            if (match.getFirstGames() == 1) {
+            if (match.getFirstSets() == 1) {
                 match.setFirstSets(2);
                 match.setWinner(match.getPlayer1());
                 match.setFinished(true);
@@ -139,7 +139,7 @@ public class MatchScoreCalculationService {
         }
 
         if (match.getPlayer2().getId() == winner.getId()) {
-            if (match.getSecondGames() == 1) {
+            if (match.getSecondSets() == 1) {
                 match.setSecondSets(2);
                 match.setWinner(match.getPlayer2());
                 match.setFinished(true);

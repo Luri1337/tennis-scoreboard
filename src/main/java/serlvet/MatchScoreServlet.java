@@ -23,7 +23,6 @@ public class MatchScoreServlet extends HttpServlet {
     private MatchScoreCalculationService matchScoreCalculationService;
     private FinishedMatchesPersistenceService finishedMatchesPersistenceService;
     private PlayerDao playerDao;
-    private MatchDao matchDao;
 
     @Override
     public void init() {
@@ -32,7 +31,6 @@ public class MatchScoreServlet extends HttpServlet {
         matchScoreCalculationService = (MatchScoreCalculationService) getServletContext().getAttribute("matchScoreService");
         finishedMatchesPersistenceService = (FinishedMatchesPersistenceService) getServletContext().getAttribute("finishedMatchesService");
         playerDao = new PlayerDao(sessionFactory);
-        matchDao = new MatchDao(sessionFactory);
     }
 
     @Override
@@ -58,8 +56,8 @@ public class MatchScoreServlet extends HttpServlet {
             match = matchScoreCalculationService.addPoint(match, winner);
 
             if(match.isFinished()){
-                finishedMatchesPersistenceService.saveMatch(match, matchDao);
-                resp.sendRedirect("/matches");
+                finishedMatchesPersistenceService.saveMatch(match);
+                resp.sendRedirect(req.getContextPath() + "/matches");
             }else {
                 req.setAttribute("match", match);
                 req.getRequestDispatcher("/WEB-INF/jsp/match-score.jsp").forward(req, resp);
