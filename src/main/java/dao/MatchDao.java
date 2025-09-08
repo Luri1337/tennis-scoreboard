@@ -51,4 +51,16 @@ public class MatchDao implements CrudDao<FinishedMatch> {
         }
     }
 
+    public List<FinishedMatch> getByPage(int page, int size) {
+        try(Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            return session.createQuery("""
+               FROM FinishedMatch m order by m.id
+            """, FinishedMatch.class)
+                    .setFirstResult((page - 1) * size)
+                    .setMaxResults(page * size)
+                    .list();
+        }
+    }
+
 }

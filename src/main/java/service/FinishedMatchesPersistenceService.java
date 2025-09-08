@@ -4,7 +4,6 @@ import dao.MatchDao;
 import lombok.Setter;
 import model.entity.FinishedMatch;
 import model.entity.OngoingMatch;
-import model.entity.Player;
 
 import java.util.List;
 @Setter
@@ -23,11 +22,15 @@ public class FinishedMatchesPersistenceService {
         matchDao.save(finishedMatch);
     }
 
-    public List<FinishedMatch> getAllMatches() {
-        return matchDao.getAll();
+    public List<FinishedMatch> getMatchesByPage(int pageParam) {
+        return matchDao.getByPage(pageParam, 10);
     }
 
     public List<FinishedMatch> getMatchesByFilter(String filter) {
         return matchDao.getByName(filter);
+    }
+
+    public List<FinishedMatch> getAllMatches() {
+        return matchDao.getAll();
     }
 }

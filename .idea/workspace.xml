@@ -9,17 +9,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24997aee-ecde-4976-811f-55a953de3e4b" name="Changes" comment="MatchScoreCalculationService realz. correct working version">
+    <list default="true" id="24997aee-ecde-4976-811f-55a953de3e4b" name="Changes" comment="Matches service realz. &#10;FinishedMatchesPersistenceService realz. Some changes with MatchDao and AppInitializer">
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/serlvet/HomeServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/import.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/home.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/MatchDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/MatchDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/serlvet/MatchScoreServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/serlvet/MatchScoreServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/serlvet/MatchesServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/serlvet/MatchesServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/FinishedMatchesPersistenceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/FinishedMatchesPersistenceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/MatchScoreCalculationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/MatchScoreCalculationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/AppInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/AppInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/HibernateListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/matches.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/matches.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/match-score.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/match-score.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,9 +29,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jsp File" />
         <option value="Enum" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -103,6 +103,7 @@
   </component>
   <component name="RunManager">
     <configuration name="Tomcat 11.0.4" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 11.0.4" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="UPDATING_POLICY" value="update-resources" />
       <deployment>
         <artifact name="tennis-scoreboard:war exploded">
           <settings>
@@ -121,7 +122,37 @@
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="52200" />
       </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
         <option name="USE_ENV_VARIABLES" value="true" />
         <STARTUP>
           <option name="USE_DEFAULT" value="true" />
@@ -188,7 +219,8 @@
       <workItem from="1756884814132" duration="15914000" />
       <workItem from="1756983888812" duration="7968000" />
       <workItem from="1757062313585" duration="12103000" />
-      <workItem from="1757149697393" duration="7453000" />
+      <workItem from="1757149697393" duration="8153000" />
+      <workItem from="1757309026185" duration="10145000" />
     </task>
     <task id="LOCAL-00001" summary="Connect Hibernate, add data source. Create Player entity. Table players in db is not creating, when starting project.">
       <option name="closed" value="true" />
@@ -246,7 +278,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757080297583</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Matches service realz. &#10;FinishedMatchesPersistenceService realz. Some changes with MatchDao and AppInitializer">
+      <option name="closed" value="true" />
+      <created>1757159323688</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1757159323688</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -260,6 +300,7 @@
     <MESSAGE value="MatchScoreCalculationService realz." />
     <MESSAGE value="MatchScoreCalculationService realz. in 2 time" />
     <MESSAGE value="MatchScoreCalculationService realz. correct working version" />
-    <option name="LAST_COMMIT_MESSAGE" value="MatchScoreCalculationService realz. correct working version" />
+    <MESSAGE value="Matches service realz. &#10;FinishedMatchesPersistenceService realz. Some changes with MatchDao and AppInitializer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Matches service realz. &#10;FinishedMatchesPersistenceService realz. Some changes with MatchDao and AppInitializer" />
   </component>
 </project>
