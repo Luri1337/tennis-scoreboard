@@ -1,4 +1,4 @@
-package serlvet;
+package servlet;
 
 import dao.PlayerDao;
 import jakarta.servlet.ServletException;

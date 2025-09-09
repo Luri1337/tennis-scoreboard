@@ -9,17 +9,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24997aee-ecde-4976-811f-55a953de3e4b" name="Changes" comment="Matches service realz. &#10;FinishedMatchesPersistenceService realz. Some changes with MatchDao and AppInitializer">
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/serlvet/HomeServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/import.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/home.jsp" afterDir="false" />
+    <list default="true" id="24997aee-ecde-4976-811f-55a953de3e4b" name="Changes" comment="Added HomeServlet, modify MatchesServlet and FinishedMatchesPersistenceService. &#10;Prescribed TODOS">
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/MatchListingService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/MatchDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/MatchDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/serlvet/MatchesServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/serlvet/MatchesServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/serlvet/HomeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/HomeServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/serlvet/MatchScoreServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/MatchScoreServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/serlvet/MatchesServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/MatchesServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/serlvet/NewMatchServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/NewMatchServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/FinishedMatchesPersistenceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/FinishedMatchesPersistenceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/match-score.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/match-score.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/AppInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/AppInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/import.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/import.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/matches.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/matches.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +31,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -220,7 +221,9 @@
       <workItem from="1756983888812" duration="7968000" />
       <workItem from="1757062313585" duration="12103000" />
       <workItem from="1757149697393" duration="8153000" />
-      <workItem from="1757309026185" duration="10145000" />
+      <workItem from="1757309026185" duration="10900000" />
+      <workItem from="1757395932482" duration="1418000" />
+      <workItem from="1757399792727" duration="8993000" />
     </task>
     <task id="LOCAL-00001" summary="Connect Hibernate, add data source. Create Player entity. Table players in db is not creating, when starting project.">
       <option name="closed" value="true" />
@@ -286,7 +289,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757159323688</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added HomeServlet, modify MatchesServlet and FinishedMatchesPersistenceService. &#10;Prescribed TODOS">
+      <option name="closed" value="true" />
+      <created>1757347502477</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1757347502477</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -301,6 +312,7 @@
     <MESSAGE value="MatchScoreCalculationService realz. in 2 time" />
     <MESSAGE value="MatchScoreCalculationService realz. correct working version" />
     <MESSAGE value="Matches service realz. &#10;FinishedMatchesPersistenceService realz. Some changes with MatchDao and AppInitializer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Matches service realz. &#10;FinishedMatchesPersistenceService realz. Some changes with MatchDao and AppInitializer" />
+    <MESSAGE value="Added HomeServlet, modify MatchesServlet and FinishedMatchesPersistenceService. &#10;Prescribed TODOS" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added HomeServlet, modify MatchesServlet and FinishedMatchesPersistenceService. &#10;Prescribed TODOS" />
   </component>
 </project>

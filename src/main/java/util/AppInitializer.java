@@ -8,6 +8,7 @@ import jakarta.servlet.annotation.WebListener;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import service.FinishedMatchesPersistenceService;
+import service.MatchListingService;
 import service.MatchScoreCalculationService;
 import service.OngoingMatchesService;
 
@@ -24,6 +25,7 @@ public class AppInitializer implements ServletContextListener {
         sce.getServletContext().setAttribute("ongoingMatchesService", new OngoingMatchesService());
         sce.getServletContext().setAttribute("matchScoreService", new MatchScoreCalculationService());
         sce.getServletContext().setAttribute("finishedMatchesService", new FinishedMatchesPersistenceService(matchDao));
+        sce.getServletContext().setAttribute("matchListingService", new MatchListingService(matchDao));
     }
 
     @Override

@@ -21,16 +21,4 @@ public class FinishedMatchesPersistenceService {
 
         matchDao.save(finishedMatch);
     }
-
-    public List<FinishedMatch> getMatchesByPage(int pageParam) {
-        return matchDao.getByPage(pageParam, 10);
-    }
-
-    public List<FinishedMatch> getMatchesByFilter(String filter) {
-        return matchDao.getByName(filter);
-    }
-
-    public List<FinishedMatch> getAllMatches() {
-        return matchDao.getAll();
-    }
 }

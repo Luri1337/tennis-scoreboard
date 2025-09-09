@@ -38,9 +38,7 @@
                        name="filter"
                        value="${filter != null ? filter : ''}" />
                 <button type="submit" class="btn-filter">Apply</button>
-                <a href="${pageContext.request.contextPath}/matches">
-                    <button type="button" class="btn-filter">Reset Filter</button>
-                </a>
+                <a href="${pageContext.request.contextPath}/matches" class="btn-filter">Reset Filter</a>
             </form>
         </div>
 

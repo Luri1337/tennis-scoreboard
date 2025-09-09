@@ -18,4 +18,4 @@ INSERT INTO matches (player1, player2, winner) VALUES ( 2, 3, 2);
 INSERT INTO matches (player1, player2, winner) VALUES (3, 2, 3);
 INSERT INTO matches (player1, player2, winner) VALUES ( 1, 2, 1);
 INSERT INTO matches (player1, player2, winner) VALUES ( 3, 4, 3);
-INSERT INTO matches (player1, player2, winner) VALUES ( 2, 4, 2);
+INSERT INTO matches (player1, player2, winner) VALUES (  2, 4, 2);

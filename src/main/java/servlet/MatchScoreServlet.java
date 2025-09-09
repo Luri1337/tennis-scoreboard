@@ -1,6 +1,5 @@
-package serlvet;
+package servlet;
 
-import dao.MatchDao;
 import dao.PlayerDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

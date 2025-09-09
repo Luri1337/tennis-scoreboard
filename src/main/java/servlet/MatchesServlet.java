@@ -1,4 +1,4 @@
-package serlvet;
+package servlet;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -6,12 +6,12 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.entity.FinishedMatch;
-import service.FinishedMatchesPersistenceService;
+import service.MatchListingService;
 
 
 import java.io.IOException;
 import java.util.List;
-//TODO сделать поиск по фильтру с буквой, сделать так чтобы когда задавался фильтр пагинация тоже работала.
+//TODO сделать так чтобы когда задавался фильтр пагинация тоже работала.
 // Отрефакторить, сделать сервлеты более чистыми
 // сделать сервис по подсчету очков не зависящим от конкретного плеера
 // добавить валидаторы, обработчики исключений
@@ -22,30 +22,28 @@ import java.util.List;
 
 @WebServlet("/matches")
 public class MatchesServlet extends HttpServlet {
-    private FinishedMatchesPersistenceService finishedMatchesPersistenceService;
+    private MatchListingService matchListingService;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int currentPage = 1;
+
         String pageParam = req.getParameter("page");
         if (pageParam != null) {
-            try{
-                currentPage = Integer.parseInt(pageParam);
-            }catch (NumberFormatException e){
-                currentPage = 1;
-            }
+            currentPage = Integer.parseInt(pageParam);
         }
+
         String filter = req.getParameter("filter");
-        List <FinishedMatch> matches;
+        List <FinishedMatch> matches = matchListingService.getMatches(filter);
 
-        if (filter != null && !filter.isEmpty()) {
-            matches = finishedMatchesPersistenceService.getMatchesByFilter(filter);
-        }else{
-            matches = finishedMatchesPersistenceService.getMatchesByPage(currentPage);
+
+        double totalPages = matchListingService.getTotalPages(matches);
+
+        if (currentPage > totalPages) {
+            currentPage = 1;
         }
 
-        List <FinishedMatch> allMatches = finishedMatchesPersistenceService.getAllMatches();
-        double totalPages =Math.ceil ((double) allMatches.size() / 10);
-
+        int min = Math.min(currentPage * 10, matches.size());
+        matches =  matches.subList((currentPage - 1) * 10, min);
 
         req.setAttribute("matches", matches);
         req.setAttribute("currentPage", currentPage);
@@ -57,6 +55,6 @@ public class MatchesServlet extends HttpServlet {
 
     @Override
     public void init(){
-        finishedMatchesPersistenceService = (FinishedMatchesPersistenceService) getServletContext().getAttribute("finishedMatchesService");
+        matchListingService = (MatchListingService) getServletContext().getAttribute("matchListingService");
     }
 }
