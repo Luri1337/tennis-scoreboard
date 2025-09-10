@@ -27,7 +27,6 @@ public class MatchDao implements CrudDao<FinishedMatch> {
     @Override
     public Optional<FinishedMatch> getById(int id) {
         try (Session session = sessionFactory.openSession()) {
-            session.beginTransaction();
             return session.createQuery("from FinishedMatch where id = :id", FinishedMatch.class)
                     .setParameter("id", id).uniqueResultOptional();
         }
@@ -36,20 +35,19 @@ public class MatchDao implements CrudDao<FinishedMatch> {
     @Override
     public List<FinishedMatch> getAll() {
         try (Session session = sessionFactory.openSession()) {
-            session.beginTransaction();
             return session.createQuery("FROM FinishedMatch m order by m.id", FinishedMatch.class).list();
         }
     }
 
     public List<FinishedMatch> getByName(String name) {
         try (Session session = sessionFactory.openSession()) {
-            session.beginTransaction();
             return session.createQuery("""
                             FROM FinishedMatch m
                             WHERE m.player1.name like :name OR m.player2.name like :name
                             """, FinishedMatch.class)
                     .setParameter("name", "%" + name + "%")
                     .list();
+
         }
     }
 

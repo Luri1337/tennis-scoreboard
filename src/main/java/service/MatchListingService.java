@@ -1,6 +1,7 @@
 package service;
 
 import dao.MatchDao;
+import dto.MatchesPageDto;
 import model.entity.FinishedMatch;
 
 import java.util.List;
@@ -12,7 +13,30 @@ public class MatchListingService {
         this.matchDao = matchDao;
     }
 
-    public List<FinishedMatch> getMatches(String filter) {
+    public MatchesPageDto getMatchesPageDto(String filter, String pageParam) {
+        int currentPage = 1;
+
+        if (pageParam != null) {
+            currentPage = Integer.parseInt(pageParam);
+        }
+
+        List<FinishedMatch> matches = getMatches(filter);
+
+
+        double totalPages = getTotalPages(matches);
+
+        if (currentPage > totalPages) {
+            currentPage = 1;
+        }
+
+        int min = Math.min(currentPage * 10, matches.size());
+        matches = matches.subList((currentPage - 1) * 10, min);
+
+        return new MatchesPageDto(matches, totalPages, currentPage, filter);
+    }
+
+    private List<FinishedMatch> getMatches(String filter) {
+
         if (filter != null && !filter.isEmpty()) {
             return getMatchesByFilter(filter);
         } else {
@@ -24,7 +48,7 @@ public class MatchListingService {
         return matchDao.getByName(filter);
     }
 
-    public double getTotalPages(List<FinishedMatch> matches) {
+    private double getTotalPages(List<FinishedMatch> matches) {
         return Math.ceil((double) matches.size() / 10);
     }
 }
