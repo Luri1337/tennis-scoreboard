@@ -5,7 +5,18 @@ import model.entity.OngoingMatch;
 import model.entity.Player;
 
 public class MatchScoreCalculationService {
+    private static final int GAMES_FIVE = 5;
+    private static final int GAMES_SIX = 6;
+    private static final int GAMES_FOUR = 4;
+    private static final int GAMES_ONE = 1;
+    private static final int GAMES_ZERO = 0;
 
+    private static final int SETS_ONE = 1;
+    private static final int SETS_TWO = 2;
+
+    private static final int MIN_DIFF = -1;
+    private static final int TIEBREAK_LIMIT = 6;
+    private static final int TIEBREAK_POINT = 1;
 
     public OngoingMatch addPoint(OngoingMatch match, Player winner) {
         boolean isFirst = match.getPlayer1().getId() == winner.getId();
@@ -44,19 +55,19 @@ public class MatchScoreCalculationService {
         int current = getGames(match, isFirst);
         int opponent = getGames(match, !isFirst);
 
-        if (current == 5 && opponent == 6) {
-            setGame(match, isFirst, current + 1);
+        if (current == GAMES_FIVE && opponent == GAMES_SIX) {
+            setGame(match, isFirst, current + GAMES_ONE);
             match.getTieBreak().setTieBreak(true);
-        } else if (current == 5 && opponent <= 4) {
-            setGame(match, isFirst, 0);
-            setGame(match, !isFirst, 0);
+        } else if (current == GAMES_FIVE && opponent <= GAMES_FOUR) {
+            setGame(match, isFirst, GAMES_ZERO);
+            setGame(match, !isFirst, GAMES_ZERO);
             addSet(match, winner);
-        } else if (current == 6 && opponent == 5) {
-            setGame(match, isFirst, 0);
-            setGame(match, !isFirst, 0);
+        } else if (current == GAMES_SIX && opponent == GAMES_FIVE) {
+            setGame(match, isFirst, GAMES_ZERO);
+            setGame(match, !isFirst, GAMES_ZERO);
             addSet(match, winner);
         } else {
-            setGame(match, isFirst, current + 1);
+            setGame(match, isFirst, current + GAMES_ONE);
         }
 
     }
@@ -66,12 +77,12 @@ public class MatchScoreCalculationService {
 
         int current = getSets(match, isFirst);
 
-        if (current == 1) {
-            setSet(match, isFirst, 2);
+        if (current == SETS_ONE) {
+            setSet(match, isFirst, SETS_TWO);
             match.setWinner(winner);
             match.setFinished(true);
         } else {
-            setSet(match, isFirst, current + 1);
+            setSet(match, isFirst, current + SETS_ONE);
         }
     }
 
@@ -82,12 +93,12 @@ public class MatchScoreCalculationService {
         int current = getTieBreakPoints(match, isFirst);
         int opponent = getTieBreakPoints(match, !isFirst);
 
-        if ((current == opponent) || (current - opponent == -1) || (current < 6)) {
-            setTieBreakPoint(match, isFirst, current + 1);
+        if ((current == opponent) || (current - opponent == MIN_DIFF) || (current < TIEBREAK_LIMIT)) {
+            setTieBreakPoint(match, isFirst, current + TIEBREAK_POINT);
         } else {
             match.getTieBreak().reset();
-            setGame(match, isFirst, 0);
-            setGame(match, !isFirst, 0);
+            setGame(match, isFirst, GAMES_ZERO);
+            setGame(match, !isFirst, GAMES_ZERO);
             addSet(match, winner);
         }
 

@@ -7,6 +7,8 @@ import model.entity.FinishedMatch;
 import java.util.List;
 
 public class MatchListingService {
+    private static final int PAGE_VALUE = 1;
+    private static final int PAGE_LENGTH = 10;
     private final MatchDao matchDao;
 
     public MatchListingService(MatchDao matchDao) {
@@ -14,7 +16,7 @@ public class MatchListingService {
     }
 
     public MatchesPageDto getMatchesPageDto(String filter, String pageParam) {
-        int currentPage = 1;
+        int currentPage = PAGE_VALUE;
 
         if (pageParam != null) {
             currentPage = Integer.parseInt(pageParam);
@@ -26,11 +28,11 @@ public class MatchListingService {
         double totalPages = getTotalPages(matches);
 
         if (currentPage > totalPages) {
-            currentPage = 1;
+            currentPage = PAGE_VALUE;
         }
 
-        int min = Math.min(currentPage * 10, matches.size());
-        matches = matches.subList((currentPage - 1) * 10, min);
+        int min = Math.min(currentPage * PAGE_LENGTH, matches.size());
+        matches = matches.subList((currentPage - PAGE_VALUE) * PAGE_LENGTH, min);
 
         return new MatchesPageDto(matches, totalPages, currentPage, filter);
     }
@@ -49,6 +51,6 @@ public class MatchListingService {
     }
 
     private double getTotalPages(List<FinishedMatch> matches) {
-        return Math.ceil((double) matches.size() / 10);
+        return Math.ceil((double) matches.size() / PAGE_LENGTH);
     }
 }

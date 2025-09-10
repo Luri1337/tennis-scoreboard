@@ -11,15 +11,6 @@ import service.MatchListingService;
 
 import java.io.IOException;
 
-//TODO
-// Отрефакторить, сделать сервлеты более чистыми
-// сделать сервис по подсчету очков не зависящим от конкретного плеера
-// добавить валидаторы, обработчики исключений
-// фронтенд захуярить самому
-// вынести магические числа в переменные
-// деплой
-//
-
 @WebServlet("/matches")
 public class MatchesServlet extends HttpServlet {
     private MatchListingService matchListingService;
