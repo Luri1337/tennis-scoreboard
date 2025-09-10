@@ -31,10 +31,4 @@ public class FinishedMatch {
     @JoinColumn(name = "winner", nullable = false)
     private Player winner;
 
-
-    public FinishedMatch(Player player1, Player player2, Player winner) {
-        this.player1 = player1;
-        this.player2 = player2;
-        this.winner = winner;
-    }
 }

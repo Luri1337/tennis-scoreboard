@@ -8,7 +8,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum Point {
-    ZERO ("0"), FIFTEEN ("15"), THIRTEEN ("30"), FORTY ("40"), ADVANCED ( "AD");
+    ZERO ("0"), FIFTEEN ("15"), THIRTY ("30"), FORTY ("40"), ADVANCED ( "AD");
 
     private final String value;
 
