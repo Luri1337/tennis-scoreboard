@@ -19,7 +19,7 @@
         <div>
             <nav class="nav-links">
                 <a class="nav-link" href="${pageContext.request.contextPath}/">Home</a>
-                <a class="nav-link" href="${pageContext.request.contextPath}/matches">Matches</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/matches?page=1&filter=">Matches</a>
             </nav>
         </div>
     </section>
@@ -37,8 +37,9 @@
                        type="text"
                        name="filter"
                        value="${filter != null ? filter : ''}" />
+                <input type="hidden" name="page" value="1" />
                 <button type="submit" class="btn-filter">Apply</button>
-                <a href="${pageContext.request.contextPath}/matches" class="btn-filter">Reset Filter</a>
+                <a href="${pageContext.request.contextPath}/matches?filter=&page=1" class="btn-filter">Reset Filter</a>
             </form>
         </div>
 

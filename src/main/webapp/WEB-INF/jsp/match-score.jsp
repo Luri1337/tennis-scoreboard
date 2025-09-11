@@ -25,7 +25,7 @@
         <div>
             <nav class="nav-links">
                 <a class="nav-link" href="${pageContext.request.contextPath}/new-match">Home</a>
-                <a class="nav-link" href="${pageContext.request.contextPath}/matches">Matches</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/matches?page=1&filter=">Matches</a>
             </nav>
         </div>
     </section>
