@@ -21,8 +21,9 @@ public class AppInitializer implements ServletContextListener {
         sce.getServletContext().setAttribute("sessionFactory", sessionFactory);
 
         MatchDao matchDao = new MatchDao(sessionFactory);
+        PlayerDao playerDao = new PlayerDao(sessionFactory);
 
-        sce.getServletContext().setAttribute("ongoingMatchesService", new OngoingMatchesService());
+        sce.getServletContext().setAttribute("ongoingMatchesService", new OngoingMatchesService(playerDao));
         sce.getServletContext().setAttribute("matchScoreService", new MatchScoreCalculationService());
         sce.getServletContext().setAttribute("finishedMatchesService", new FinishedMatchesPersistenceService(matchDao));
         sce.getServletContext().setAttribute("matchListingService", new MatchListingService(matchDao));

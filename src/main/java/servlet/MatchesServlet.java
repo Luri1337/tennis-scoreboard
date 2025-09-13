@@ -2,7 +2,7 @@ package servlet;
 
 import dto.MatchesPageDto;
 import dto.validationDto.PageFilterContextDto;
-import exception.ExceptionHandler;
+import util.ExceptionHandler;
 import exception.InvalidFilterFormat;
 import exception.InvalidPageFormat;
 import exception.MissingRequiredParameterException;
@@ -37,7 +37,7 @@ public class MatchesServlet extends HttpServlet {
             req.setAttribute("filter", pageDto.getFilter());
 
             req.getRequestDispatcher("/WEB-INF/jsp/matches.jsp").forward(req, resp);
-        } catch (InvalidFilterFormat | InvalidPageFormat | MissingRequiredParameterException e) {
+        }catch (InvalidFilterFormat | InvalidPageFormat | MissingRequiredParameterException e) {
             ExceptionHandler.handleException(resp, req, HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
         }catch (Exception e) {
             ExceptionHandler.handleException(resp, req, HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());

@@ -2,7 +2,7 @@ package servlet;
 
 import dao.PlayerDao;
 import dto.validationDto.MatchPlayersContext;
-import exception.ExceptionHandler;
+import util.ExceptionHandler;
 import exception.InvalidNameFormat;
 import exception.MissingRequiredParameterException;
 import jakarta.servlet.ServletException;
@@ -10,8 +10,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.entity.OngoingMatch;
-import model.entity.Player;
 import org.hibernate.SessionFactory;
 import service.OngoingMatchesService;
 import util.validation.NewMatchValidator;
@@ -46,20 +44,8 @@ public class NewMatchServlet extends HttpServlet {
 
         try {
             validator.validate(new MatchPlayersContext(player1, player2));
-            Player newPlayer1 = new Player();
-            newPlayer1.setName(player1);
-            Player newPlayer2 = new Player();
-            newPlayer2.setName(player2);
-            playerDao.save(newPlayer1);
-            playerDao.save(newPlayer2);
 
-            OngoingMatch match = new OngoingMatch();
-            match.setPlayer1(newPlayer1);
-            match.setPlayer2(newPlayer2);
-            match.init();
-
-            UUID matchId = UUID.randomUUID();
-            ongoingMatchesService.addMatch(matchId, match);
+            UUID matchId = ongoingMatchesService.registerMatch(player1, player2);
 
             resp.sendRedirect(req.getContextPath() + "/match-score?uuid=" + matchId);
 

@@ -2,9 +2,10 @@ package servlet;
 
 import dao.PlayerDao;
 import dto.validationDto.MatchScoreUpdateContext;
-import exception.ExceptionHandler;
+import util.ExceptionHandler;
 import exception.InvalidIdFormat;
 import exception.MissingRequiredParameterException;
+import exception.PlayerNotFoundException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -66,7 +67,7 @@ public class MatchScoreServlet extends HttpServlet {
             validator.validatePostMethod(new MatchScoreUpdateContext(winnerId));
 
             OngoingMatch match = ongoingMatchesService.getMatches().get(UUID.fromString(matchId));
-            Player winner = playerDao.getById(Integer.parseInt(winnerId)).orElseThrow(() -> new RuntimeException("Player not found"));
+            Player winner = playerDao.getById(Integer.parseInt(winnerId)).orElseThrow(() -> new PlayerNotFoundException("Player not found"));
 
             match = matchScoreCalculationService.addPoint(match, winner);
 
@@ -79,6 +80,8 @@ public class MatchScoreServlet extends HttpServlet {
             }
         } catch (MissingRequiredParameterException | InvalidIdFormat e) {
             ExceptionHandler.handleException(resp, req, HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
+        } catch (PlayerNotFoundException e) {
+            ExceptionHandler.handleException(resp, req, HttpServletResponse.SC_NOT_FOUND, e.getMessage());
         } catch (Exception e) {
             ExceptionHandler.handleException(resp, req, HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
         }
