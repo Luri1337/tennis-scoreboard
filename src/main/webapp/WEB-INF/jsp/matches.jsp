@@ -4,98 +4,96 @@
 <head>
     <meta charset="UTF-8">
     <title>Tennis Scoreboard | Finished Matches</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/MatchesStyle.css">
 </head>
 
 <body>
-<header class="header">
-    <section class="nav-header">
+<header class="site-header">
+    <div class="container header-inner">
         <div class="brand">
-            <div class="nav-toggle">
-                <img src="${pageContext.request.contextPath}/images/menu.png" alt="Logo" class="logo">
+            <div class="logo-circle">TS</div>
+            <div class="brand-text">
+                <span class="title">TennisScoreboard</span>
+                <span class="subtitle">Live match scoreboard</span>
             </div>
-            <span class="logo-text">TennisScoreboard</span>
         </div>
-        <div>
-            <nav class="nav-links">
-                <a class="nav-link" href="${pageContext.request.contextPath}/">Home</a>
-                <a class="nav-link" href="${pageContext.request.contextPath}/matches?page=1&filter=">Matches</a>
-            </nav>
-        </div>
-    </section>
+        <nav class="nav">
+            <a class="nav-link" href="${pageContext.request.contextPath}/">Home</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/matches?page=1&filter=">Matches</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/new-match">New match</a>
+        </nav>
+    </div>
 </header>
 
-<main>
-    <div class="container">
-        <h1>Matches</h1>
+<main class="container main-content">
+    <h1 class="page-title">Finished <span class="accent">Matches</span></h1>
 
-        <!-- фильтр -->
-        <div class="input-container">
-            <form method="get" action="${pageContext.request.contextPath}/matches">
-                <input class="input-filter"
-                       placeholder="Filter by name"
-                       type="text"
-                       name="filter"
-                       value="${filter != null ? filter : ''}" />
-                <input type="hidden" name="page" value="1" />
-                <button type="submit" class="btn-filter">Apply</button>
-                <a href="${pageContext.request.contextPath}/matches?filter=&page=1" class="btn-filter">Reset Filter</a>
-            </form>
-        </div>
+    <!-- фильтр -->
+    <div class="filter-section">
+        <form class="filter-form" method="get" action="${pageContext.request.contextPath}/matches">
+            <input class="filter-input"
+                   placeholder="Filter by player name"
+                   type="text"
+                   name="filter"
+                   value="${filter != null ? filter : ''}" />
+            <input type="hidden" name="page" value="1" />
+            <button type="submit" class="filter-btn">Apply Filter</button>
+            <a href="${pageContext.request.contextPath}/matches?filter=&page=1" class="reset-btn">Reset Filter</a>
+        </form>
+    </div>
 
-        <!-- таблица матчей -->
-        <table class="table-matches">
+    <!-- таблица матчей -->
+    <table class="matches-table">
+        <thead>
+        <tr>
+            <th>Player One</th>
+            <th>Player Two</th>
+            <th>Winner</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="match" items="${matches}">
             <tr>
-                <th>Player One</th>
-                <th>Player Two</th>
-                <th>Winner</th>
+                <td>${match.player1.name}</td>
+                <td>${match.player2.name}</td>
+                <td>
+                    <c:choose>
+                        <c:when test="${match.winner != null}">
+                            <span class="winner-name">${match.winner.name}</span>
+                        </c:when>
+                        <c:otherwise>
+                            <span class="in-progress">In Progress</span>
+                        </c:otherwise>
+                    </c:choose>
+                </td>
             </tr>
-            <c:forEach var="match" items="${matches}">
-                <tr>
-                    <td>${match.player1.name}</td>
-                    <td>${match.player2.name}</td>
-                    <td>
-                        <c:choose>
-                            <c:when test="${match.winner != null}">
-                                <span class="winner-name-td">${match.winner.name}</span>
-                            </c:when>
-                            <c:otherwise>In Progress</c:otherwise>
-                        </c:choose>
-                    </td>
-                </tr>
-            </c:forEach>
-        </table>
+        </c:forEach>
+        </tbody>
+    </table>
 
-        <!-- пагинация -->
-        <div class="pagination">
-            <c:if test="${currentPage > 1}">
-                <a class="prev"
-                   href="${pageContext.request.contextPath}/matches?filter=${filter}&page=${currentPage - 1}">
-                    &lt;
-                </a>
-            </c:if>
+    <!-- пагинация -->
+    <div class="pagination">
+        <c:if test="${currentPage > 1}">
+            <a class="prev"
+               href="${pageContext.request.contextPath}/matches?filter=${filter}&page=${currentPage - 1}">
+                &lt;
+            </a>
+        </c:if>
 
-            <c:forEach var="i" begin="1" end="${totalPages}">
-                <a class="num-page ${i == currentPage ? 'current' : ''}"
-                   href="${pageContext.request.contextPath}/matches?filter=${filter}&page=${i}">
-                        ${i}
-                </a>
-            </c:forEach>
+        <c:forEach var="i" begin="1" end="${totalPages}">
+            <a class="num-page ${i == currentPage ? 'current' : ''}"
+               href="${pageContext.request.contextPath}/matches?filter=${filter}&page=${i}">
+                    ${i}
+            </a>
+        </c:forEach>
 
-            <c:if test="${currentPage < totalPages}">
-                <a class="next"
-                   href="${pageContext.request.contextPath}/matches?filter=${filter}&page=${currentPage + 1}">
-                    &gt;
-                </a>
-            </c:if>
-        </div>
+        <c:if test="${currentPage < totalPages}">
+            <a class="next"
+               href="${pageContext.request.contextPath}/matches?filter=${filter}&page=${currentPage + 1}">
+                &gt;
+            </a>
+        </c:if>
     </div>
 </main>
-
-<footer>
-    <div class="footer">
-        <p>&copy; Tennis Scoreboard</p>
-    </div>
-</footer>
 </body>
 </html>

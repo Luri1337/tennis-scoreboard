@@ -9,20 +9,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24997aee-ecde-4976-811f-55a953de3e4b" name="Changes" comment="Did validation and exception handling for servlets">
-      <change afterPath="$PROJECT_DIR$/src/main/java/exception/PlayerNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/MatchScoreCalculationServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/hibernate-test.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+    <list default="true" id="24997aee-ecde-4976-811f-55a953de3e4b" name="Changes" comment="Created Junit tests, for MatchScoreCalculationService.">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/ErrorStyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/HomeStyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/MatchScoreStyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/MatchesStyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/NewMatchStyle.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/PlayerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/PlayerDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/exception/ExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/ExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/OngoingMatchesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/OngoingMatchesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/MatchScoreServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/MatchScoreServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/MatchesServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/MatchesServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/NewMatchServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/NewMatchServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/AppInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/AppInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/error.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/error.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/match-score.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/match-score.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/matches.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/matches.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/new-match.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/new-match.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +39,7 @@
         <option value="Record" />
         <option value="Exception" />
         <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -70,6 +72,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -83,15 +88,18 @@
   "keyToString": {
     "JUnit.MatchScoreCalculationServiceTest.shouldFinishGameWhenPlayerScoresAtFortyZero.executor": "Debug",
     "JUnit.MatchScoreCalculationServiceTest.shouldNotFinishGameWhenScoreIsDeuceAndPlayerScores.executor": "Debug",
-    "JUnit.MatchScoreCalculationServiceTest.shouldStartTieBreakIfGamesSixSix.executor": "Run",
+    "JUnit.MatchScoreCalculationServiceTest.shouldStartTieBreakIfGamesSixSix.executor": "Debug",
+    "Maven.tennis-scoreboard [clean].executor": "Run",
     "Maven.tennis-scoreboard [compile].executor": "Run",
+    "Maven.tennis-scoreboard [package].executor": "Run",
     "Maven.tennis-scoreboard [test].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Tomcat Server.Tomcat 11.0.4.executor": "Debug",
+    "Tomcat Server.Tomcat 11.0.4.executor": "Run",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Dima/IdeaProjects/tennis-scoreboard/src/test/resources",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -113,13 +121,14 @@
       <recent name="C:\Users\Dima\IdeaProjects\tennis-scoreboard\src\test\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Dima\IdeaProjects\tennis-scoreboard\src\main\webapp" />
       <recent name="C:\Users\Dima\IdeaProjects\tennis-scoreboard\src\main\webapp\WEB-INF\jsp" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MatchScoreCalculationServiceTest.shouldStartTieBreakIfGamesSixSix">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 11.0.4">
     <configuration name="MatchScoreCalculationServiceTest.shouldFinishGameWhenPlayerScoresAtFortyZero" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="tennis-scoreboard" />
       <option name="PACKAGE_NAME" value="" />
@@ -399,7 +408,8 @@
       <workItem from="1757511355233" duration="11363000" />
       <workItem from="1757596299715" duration="11279000" />
       <workItem from="1757608186498" duration="2173000" />
-      <workItem from="1757755221064" duration="14516000" />
+      <workItem from="1757755221064" duration="15072000" />
+      <workItem from="1758004178784" duration="12959000" />
     </task>
     <task id="LOCAL-00001" summary="Connect Hibernate, add data source. Create Player entity. Table players in db is not creating, when starting project.">
       <option name="closed" value="true" />
@@ -513,7 +523,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757610308560</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Created Junit tests, for MatchScoreCalculationService.">
+      <option name="closed" value="true" />
+      <created>1757778828679</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1757778828679</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -534,7 +552,8 @@
     <MESSAGE value="Change MatchScoreCalculationService&#10;Now it is not depend on which player is won." />
     <MESSAGE value="Change magic numbers on constants. Add interface Validator for future realization of validation, also add ValidationContextDto for universal parameters while validate." />
     <MESSAGE value="Did validation and exception handling for servlets" />
-    <option name="LAST_COMMIT_MESSAGE" value="Did validation and exception handling for servlets" />
+    <MESSAGE value="Created Junit tests, for MatchScoreCalculationService." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created Junit tests, for MatchScoreCalculationService." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -550,5 +569,10 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
+        <watch expression="((char[])this.cb)[100]" custom="char[]" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

@@ -1,104 +1,95 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tennis Scoreboard | Match Score</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-
-    <script src="js/app.js"></script>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/MatchScoreStyle.css">
 </head>
 <body>
-<header class="header">
-    <section class="nav-header">
+<header class="site-header">
+    <div class="container header-inner">
         <div class="brand">
-            <div class="nav-toggle">
-                <img src="images/menu.png" alt="Logo" class="logo">
+            <div class="logo-circle">TS</div>
+            <div class="brand-text">
+                <span class="title">TennisScoreboard</span>
+                <span class="subtitle">Live match scoreboard</span>
             </div>
-            <span class="logo-text">TennisScoreboard</span>
         </div>
-        <div>
-            <nav class="nav-links">
-                <a class="nav-link" href="${pageContext.request.contextPath}/new-match">Home</a>
-                <a class="nav-link" href="${pageContext.request.contextPath}/matches?page=1&filter=">Matches</a>
-            </nav>
-        </div>
-    </section>
+        <nav class="nav">
+            <a class="nav-link" href="${pageContext.request.contextPath}/">Home</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/matches?page=1&filter=">Matches</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/new-match">New match</a>
+        </nav>
+    </div>
 </header>
-<main>
-    <div class="container">
-        <h1>Current match</h1>
-        <div class="current-match-image"></div>
-        <section class="score">
-            <table class="table">
-                <thead class="result">
-                <tr>
-                    <th class="table-text">Player</th>
-                    <th class="table-text">Sets</th>
-                    <th class="table-text">Games</th>
-                    <th class="table-text">Points</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr class="player1">
-                    <td class="table-text">${match.player1.name}</td>
-                    <td class="table-text">${match.firstSets}</td>
-                    <td class="table-text">${match.firstGames}</td>
-                    <td class="table-text">
-                        <c:choose>
-                            <c:when test="${match.tieBreak.isTieBreak}">
-                                ${match.tieBreak.firstPoints}
-                            </c:when>
-                            <c:otherwise>
-                                ${match.firstPoints.value}
-                            </c:otherwise>
-                        </c:choose>
-                    </td>
-                    <td class="table-text">
-                        <form method="post" action="${pageContext.request.contextPath}/match-score?uuid=${param.uuid}">
-                            <input type="hidden" name="winner" value="${match.player1.id}">
-                            <button type="submit" class="score-btn">Score</button>
-                        </form>
-                    </td>
-                </tr>
 
-                <tr class="player2">
-                    <td class="table-text">${match.player2.name}</td>
-                    <td class="table-text">${match.secondSets}</td>
-                    <td class="table-text">${match.secondGames}</td>
-                    <td class="table-text">
-                        <c:choose>
-                            <c:when test="${match.tieBreak.isTieBreak}">
-                                ${match.tieBreak.secondPoints}
-                            </c:when>
-                            <c:otherwise>
-                                ${match.secondPoints.value}
-                            </c:otherwise>
-                        </c:choose>
-                    </td>
-                    <td class="table-text">
-                        <form method="post" action="${pageContext.request.contextPath}/match-score?uuid=${param.uuid}">
-                            <input type="hidden" name="winner" value="${match.player2.id}">
-                            <button type="submit" class="score-btn">Score</button>
-                        </form>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+<main class="container main-content">
+    <h1 class="page-title">Current <span class="accent">Match</span></h1>
 
-        </section>
+    <div class="match-image">
+        <div class="match-image-text">Live Match in Progress</div>
     </div>
+
+    <section class="score">
+        <table class="score-table">
+            <thead>
+            <tr>
+                <th>Player</th>
+                <th>Sets</th>
+                <th>Games</th>
+                <th>Points</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="player-name">${match.player1.name}</td>
+                <td>${match.firstSets}</td>
+                <td>${match.firstGames}</td>
+                <td>
+                    <c:choose>
+                        <c:when test="${match.tieBreak.isTieBreak}">
+                            ${match.tieBreak.firstPoints}
+                        </c:when>
+                        <c:otherwise>
+                            ${match.firstPoints.value}
+                        </c:otherwise>
+                    </c:choose>
+                </td>
+                <td>
+                    <form method="post" action="${pageContext.request.contextPath}/match-score?uuid=${param.uuid}">
+                        <input type="hidden" name="winner" value="${match.player1.id}">
+                        <button type="submit" class="score-btn">Score</button>
+                    </form>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="player-name">${match.player2.name}</td>
+                <td>${match.secondSets}</td>
+                <td>${match.secondGames}</td>
+                <td>
+                    <c:choose>
+                        <c:when test="${match.tieBreak.isTieBreak}">
+                            ${match.tieBreak.secondPoints}
+                        </c:when>
+                        <c:otherwise>
+                            ${match.secondPoints.value}
+                        </c:otherwise>
+                    </c:choose>
+                </td>
+                <td>
+                    <form method="post" action="${pageContext.request.contextPath}/match-score?uuid=${param.uuid}">
+                        <input type="hidden" name="winner" value="${match.player2.id}">
+                        <button type="submit" class="score-btn">Score</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
 </main>
-<footer>
-    <div class="footer">
-        <p>&copy; Tennis Scoreboard, project from <a href="https://zhukovsd.github.io/java-backend-learning-course/">zhukovsd/java-backend-learning-course</a>
-            roadmap.</p>
-    </div>
-</footer>
 </body>
 </html>
