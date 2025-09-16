@@ -8,7 +8,7 @@ A web application for creating new tennis match, track old ones. Allows:
 - Save match 
 - View the list of completed matches
 
-, **Deployment:** http://46.8.68.247:8080/
+, **Deployment:** http://217.60.36.17:8080/tennis-scoreboard-1.0-SNAPSHOT/
 
 ---
 
