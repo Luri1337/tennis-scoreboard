@@ -9,21 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24997aee-ecde-4976-811f-55a953de3e4b" name="Changes" comment="Created Junit tests, for MatchScoreCalculationService.">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/ErrorStyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/HomeStyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/MatchScoreStyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/MatchesStyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/NewMatchStyle.css" afterDir="false" />
+    <list default="true" id="24997aee-ecde-4976-811f-55a953de3e4b" name="Changes" comment="Add css for each jsp. Deepseek кормит)))">
+      <change afterPath="$PROJECT_DIR$/src/main/java/exception/SelfMatchNotAllowedException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/error.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/error.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/match-score.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/match-score.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/matches.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/matches.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/new-match.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/new-match.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/AppMassages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/AppMassages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/validation/MatchesValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/validation/MatchesValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/validation/NewMatchValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/validation/NewMatchValidator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,9 +28,9 @@
         <option value="Interface" />
         <option value="Jsp File" />
         <option value="Record" />
-        <option value="Exception" />
         <option value="Class" />
         <option value="CSS File" />
+        <option value="Exception" />
       </list>
     </option>
   </component>
@@ -409,7 +400,7 @@
       <workItem from="1757596299715" duration="11279000" />
       <workItem from="1757608186498" duration="2173000" />
       <workItem from="1757755221064" duration="15072000" />
-      <workItem from="1758004178784" duration="12959000" />
+      <workItem from="1758004178784" duration="13756000" />
     </task>
     <task id="LOCAL-00001" summary="Connect Hibernate, add data source. Create Player entity. Table players in db is not creating, when starting project.">
       <option name="closed" value="true" />
@@ -531,7 +522,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757778828679</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Add css for each jsp. Deepseek кормит)))">
+      <option name="closed" value="true" />
+      <created>1758037477156</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1758037477156</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -553,7 +552,8 @@
     <MESSAGE value="Change magic numbers on constants. Add interface Validator for future realization of validation, also add ValidationContextDto for universal parameters while validate." />
     <MESSAGE value="Did validation and exception handling for servlets" />
     <MESSAGE value="Created Junit tests, for MatchScoreCalculationService." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Junit tests, for MatchScoreCalculationService." />
+    <MESSAGE value="Add css for each jsp. Deepseek кормит)))" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add css for each jsp. Deepseek кормит)))" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

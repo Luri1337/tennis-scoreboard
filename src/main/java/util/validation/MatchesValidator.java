@@ -18,7 +18,7 @@ public class MatchesValidator {
         if (!page.matches("^[1-9][0-9]*$") && !page.isBlank()) {
             throw new InvalidPageFormat(AppMassages.INVALID_PAGE);
         }
-        if (!filter.matches("^[a-zA-Zа-яА-ЯёЁ\\\\s]+$") && !filter.isBlank()) {
+        if (!filter.matches("^[a-zA-Zа-яА-ЯёЁ\\s]+$") && !filter.isBlank()) {
             throw new InvalidFilterFormat(AppMassages.INVALID_FILTER);
         }
     }
